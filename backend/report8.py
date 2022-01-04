@@ -15,7 +15,7 @@ def getReport8(file, fileType, countryColumn, infectedColumn, daysColumn, countr
     df = pd.read_json(file)
   else:
     df = pd.read_excel(file)
-  print( df )
+  df = df.fillna(0)
   le = preprocessing.LabelEncoder()
   df = df.loc[df[countryColumn]==countryName]
   X = le.fit_transform(df[infectedColumn].to_numpy())

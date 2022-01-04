@@ -14,6 +14,7 @@ def getReport4(file, fileType, countryColumn, departmentColumn, deadsColumn, day
     df = pd.read_json(file)
   else:
     df = pd.read_excel(file)
+  df = df.fillna(0)
   values = df.loc[df[countryColumn]==countryName]
   values = values.loc[values[departmentColumn]==departmentName]
   values['date_ordinal'] = pd.to_datetime(values[daysColumn]).apply(lambda date: date.toordinal())

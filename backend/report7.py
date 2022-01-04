@@ -14,7 +14,7 @@ def crearRegrecion(file, fileType, vaccinedColumn, infectedColumn, daysColumn, c
     df = pd.read_json(file)
   else:
     df = pd.read_excel(file)
-  df.dropna()
+  df = df.fillna(0)
   x = np.asarray(df[df['dias']])[:, np.newaxis]
   y = np.asarray(df[df['infectados']])[:, np.newaxis]
   poly_degree = 3

@@ -15,6 +15,7 @@ def getReport3(file, fileType, infectedColumn, daysColumn):
     df = pd.read_json(file)
   else:
     df = pd.read_excel(file)
+  df = df.fillna(0)
   le = preprocessing.LabelEncoder()
   X = le.fit_transform(df[daysColumn].to_numpy())
   Y = le.fit_transform(df[infectedColumn].to_numpy())

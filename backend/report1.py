@@ -14,6 +14,7 @@ def getReport1(file, fileType, countryColumn, infectedColumn, daysColumn, countr
     df = pd.read_json(file)
   else:
     df = pd.read_excel(file)
+  df = df.fillna(0)
   values = df.loc[df[countryColumn]==countryName]
   values['date_ordinal'] = pd.to_datetime(values[daysColumn]).apply(lambda date: date.toordinal())
   le = preprocessing.LabelEncoder()

@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import html2canvas from "html2canvas";
 import { jsPDF } from "jspdf";
 import "./css/Principal.css"
-const API = process.env.REACT_APP_API;
+//const API = process.env.REACT_APP_API;
+const API = "http://127.0.0.1:5000/";
 const listReports = [
   ["1", "(1)Tendencia de la infección por Covid-19 en un País."], //Hechoo
   ["2", "(2)Predicción de Infectados en un País."], //Hechoo
@@ -69,35 +70,35 @@ export const Principal = () => {
     var item = document.getElementById("selectReport").value;
     setActualReport(item);
     if (item === "1") {
-      let date = [["Nombre de la columna del pais", "countryColumn"], ["Nombre de la columna de infectados", "infectedColumn"], ["Ingrese el nombre de la columna de los dias", "daysColumn"], ["Nombre del pais a evaluar", "country"]];
-      setParametersReport([...parametersReport, ...date]);
+      let date = [["Nombre de la columna del pais", "countryColumnR1"], ["Nombre de la columna de infectados", "infectedColumnR1"], ["Ingrese el nombre de la columna de los dias", "daysColumnR1"], ["Nombre del pais a evaluar", "countryR1"]];
+      setParametersReport([...date]);
     } else if (item === "2") {
-      let date = [["Nombre de la columna del pais", "countryColumn"], ["Nombre de la columna de infectados", "infectedColumn"], ["Ingrese el nombre de la columna de los dias", "daysColumn"], ["Nombre del pais a evaluar", "country"], ["Fecha a realizar predicción", "daysPredict"]];
-      setParametersReport([...parametersReport, ...date]);
+      let date = [["Nombre de la columna del pais", "countryColumnR2"], ["Nombre de la columna de infectados", "infectedColumnR2"], ["Ingrese el nombre de la columna de los dias", "daysColumnR2"], ["Nombre del pais a evaluar", "countryR2"], ["Fecha a realizar predicción", "daysPredictR2"]];
+      setParametersReport([...date]);
     } else if (item === "3") {
-      let date = [["Nombre de la columna de infectados", "infectedColumn"], ["Ingrese el nombre de la columna de los dias", "daysColumn"]];
-      setParametersReport([...parametersReport, ...date]);
+      let date = [["Nombre de la columna de infectados", "infectedColumnR3"], ["Ingrese el nombre de la columna de los dias", "daysColumnR3"]];
+      setParametersReport([...date]);
     } else if (item === "4") {
-      let date = [["Nombre de la columna del pais", "countryColumn"], ["Nombre de la columna de los departamentos", "departmentColumn"], ["Nombre de la columna de cantidad de muertos", "deads"], ["Ingrese el nombre de la columna de los dias", "daysColumn"], ["Nombre del pais a evaluar", "country"], ["Nombre del departamento o estado a evaluar", "department"], ["Fecha a realizar predicción", "daysPredict"]];
-      setParametersReport([...parametersReport, ...date]);
+      let date = [["Nombre de la columna del pais", "countryColumnR4"], ["Nombre de la columna de los departamentos", "departmentColumnR4"], ["Nombre de la columna de cantidad de muertos", "deadsR4"], ["Ingrese el nombre de la columna de los dias", "daysColumnR4"], ["Nombre del pais a evaluar", "countryR4"], ["Nombre del departamento o estado a evaluar", "departmentR4"], ["Fecha a realizar predicción", "daysPredictR4"]];
+      setParametersReport([...date]);
     } else if (item === "5") {
-      let date = [["Nombre de la columna del pais", "countryColumn"], ["Nombre de la columna de cantidad de muertos", "deads"], ["Ingrese el nombre de la columna de los dias", "daysColumn"], ["Nombre del pais a evaluar", "country"], ["Fecha a realizar predicción", "daysPredict"]];
-      setParametersReport([...parametersReport, ...date]);
+      let date = [["Nombre de la columna del pais", "countryColumnR5"], ["Nombre de la columna de cantidad de muertos", "deadsR5"], ["Ingrese el nombre de la columna de los dias", "daysColumnR5"], ["Nombre del pais a evaluar", "countryR5"], ["Fecha a realizar predicción", "daysPredictR5"]];
+      setParametersReport([...date]);
     } else if (item === "6") {
-      let date = [["Nombre de la columna del pais", "countryColumn"], ["Nombre de la columna de cantidad de muertos", "deads"], ["Ingrese el nombre de la columna de los dias", "daysColumn"], ["Nombre del pais a evaluar", "country"]];
-      setParametersReport([...parametersReport, ...date]);
+      let date = [["Nombre de la columna del pais", "countryColumnR6"], ["Nombre de la columna de cantidad de muertos", "deadsR6"], ["Ingrese el nombre de la columna de los dias", "daysColumnR6"], ["Nombre del pais a evaluar", "countryR6"]];
+      setParametersReport([...date]);
     } else if (item === "8") {
-      let date = [["Nombre de la columna del pais", "countryColumn"], ["Nombre de la columna de infectados", "infectedColumn"], ["Ingrese el nombre de la columna de los dias", "daysColumn"], ["Nombre del pais a evaluar", "country"]];
-      setParametersReport([...parametersReport, ...date]);
+      let date = [["Nombre de la columna del pais", "countryColumnR8"], ["Nombre de la columna de infectados", "infectedColumnR8"], ["Ingrese el nombre de la columna de los dias", "daysColumnR8"], ["Nombre del pais a evaluar", "countryR8"]];
+      setParametersReport([...date]);
     } else if (item === "9") {
-      let date = [["Nombre de la columna del pais", "countryColumn"], ["Nombre de la columna de cantidad de vacunados", "vaccineds"], ["Ingrese el nombre de la columna de los dias", "daysColumn"], ["Nombre del pais a evaluar", "country"]];
-      setParametersReport([...parametersReport, ...date]);
+      let date = [["Nombre de la columna del pais", "countryColumnR9"], ["Nombre de la columna de cantidad de vacunados", "vaccinedsR9"], ["Ingrese el nombre de la columna de los dias", "daysColumnR9"], ["Nombre del pais a evaluar", "countryR9"]];
+      setParametersReport([...date]);
     } else if (item === "10") {
-      let date = [["Nombre de la columna del pais", "countryColumn"], ["Nombre de la columna de cantidad de vacunados", "vaccineds"], ["Ingrese el nombre de la columna de los dias", "daysColumn"], ["Nombre del pais a evaluar A", "countryA"], ["Nombre del pais a evaluar B", "countryB"]];
-      setParametersReport([...parametersReport, ...date]);
+      let date = [["Nombre de la columna del pais", "countryColumnR10"], ["Nombre de la columna de cantidad de vacunados", "vaccinedsR10"], ["Ingrese el nombre de la columna de los dias", "daysColumnR10"], ["Nombre del pais a evaluar A", "countryAR10"], ["Nombre del pais a evaluar B", "countryBR10"]];
+      setParametersReport([...date]);
     } else if (item === "15") {
-      let date = [["Nombre de la columna del pais", "countryColumn"], ["Nombre de la columna de los departamentos", "departmentColumn"], ["Nombre de la columna de cantidad de confirmados", "confirmeds"], ["Ingrese el nombre de la columna de los dias", "daysColumn"], ["Nombre del pais a evaluar", "country"], ["Nombre del departamento o estado a evaluar", "department"]];
-      setParametersReport([...parametersReport, ...date]);
+      let date = [["Nombre de la columna del pais", "countryColumnR15"], ["Nombre de la columna de los departamentos", "departmentColumnR15"], ["Nombre de la columna de cantidad de confirmados", "confirmedsR15"], ["Ingrese el nombre de la columna de los dias", "daysColumnR15"], ["Nombre del pais a evaluar", "countryR15"], ["Nombre del departamento o estado a evaluar", "departmentR15"]];
+      setParametersReport([...date]);
     }
   };
 
@@ -105,10 +106,10 @@ export const Principal = () => {
     e.preventDefault();
     var conc = "";
     if (actualReport === "1") {
-      let countryColumn = document.getElementById("countryColumnParameter").value;
-      let infectedColumn = document.getElementById("infectedColumnParameter").value;
-      let daysColumn = document.getElementById("daysColumnParameter").value;
-      let countryName = document.getElementById("countryParameter").value;
+      let countryColumn = document.getElementById("countryColumnR1Parameter").value;
+      let infectedColumn = document.getElementById("infectedColumnR1Parameter").value;
+      let daysColumn = document.getElementById("daysColumnR1Parameter").value;
+      let countryName = document.getElementById("countryR1Parameter").value;
       const result = await fetch(`${API}/report1`, {
         method: "POST",
         headers: {
@@ -128,11 +129,11 @@ export const Principal = () => {
       conc = "Tendencia de infección de covid-19 con un error de " + data.r2 + " y un rme de " + data.rme;
       setConclusion(conc);
     } else if (actualReport === "2") {
-      let countryColumn = document.getElementById("countryColumnParameter").value;
-      let infectedColumn = document.getElementById("infectedColumnParameter").value;
-      let daysColumn = document.getElementById("daysColumnParameter").value;
-      let countryName = document.getElementById("countryParameter").value;
-      let timePredict = document.getElementById("daysPredictParameter").value;
+      let countryColumn = document.getElementById("countryColumnR2Parameter").value;
+      let infectedColumn = document.getElementById("infectedColumnR2Parameter").value;
+      let daysColumn = document.getElementById("daysColumnR2Parameter").value;
+      let countryName = document.getElementById("countryR2Parameter").value;
+      let timePredict = document.getElementById("daysPredictR2Parameter").value;
       const result = await fetch(`${API}/report2`, {
         method: "POST",
         headers: {
@@ -153,8 +154,8 @@ export const Principal = () => {
       conc = "Prediccion de covid-19 con un error de " + data.r2 + " y un rme de " + data.rme + ", la predicción para " + timePredict + " es: " + data.predict;
       setConclusion(conc);
     } else if (actualReport === "3") {
-      let infectedColumn = document.getElementById("infectedColumnParameter").value;
-      let daysColumn = document.getElementById("daysColumnParameter").value;
+      let infectedColumn = document.getElementById("infectedColumnR3Parameter").value;
+      let daysColumn = document.getElementById("daysColumnR3Parameter").value;
       const result = await fetch(`${API}/report3`, {
         method: "POST",
         headers: {
@@ -172,13 +173,13 @@ export const Principal = () => {
       conc = "Indice de progresión de la pandemia.";
       setConclusion(conc);
     } else if (actualReport === "4") {
-      let countryColumn = document.getElementById("countryColumnParameter").value;
-      let countryName = document.getElementById("countryParameter").value;
-      let deads = document.getElementById("deadsParameter").value;
-      let daysColumn = document.getElementById("daysColumnParameter").value;
-      let timePredict = document.getElementById("daysPredictParameter").value;
-      let departmentColumn = document.getElementById("departmentColumnParameter").value;
-      let department = document.getElementById("departmentParameter").value;
+      let countryColumn = document.getElementById("countryColumnR4Parameter").value;
+      let countryName = document.getElementById("countryR4Parameter").value;
+      let deads = document.getElementById("deadsR4Parameter").value;
+      let daysColumn = document.getElementById("daysColumnR4Parameter").value;
+      let timePredict = document.getElementById("daysPredictR4Parameter").value;
+      let departmentColumn = document.getElementById("departmentColumnR4Parameter").value;
+      let department = document.getElementById("departmentR4Parameter").value;
       const result = await fetch(`${API}/report4`, {
         method: "POST",
         headers: {
@@ -201,11 +202,11 @@ export const Principal = () => {
       conc = "Prediccion de mortalidad con un error de " + data.r2 + " y un rme de " + data.rme + ", la predicción para " + timePredict + " es: " + data.predict;
       setConclusion(conc);
     } else if (actualReport === "5") {
-      let countryColumn = document.getElementById("countryColumnParameter").value;
-      let countryName = document.getElementById("countryParameter").value;
-      let deads = document.getElementById("deadsParameter").value;
-      let daysColumn = document.getElementById("daysColumnParameter").value;
-      let timePredict = document.getElementById("daysPredictParameter").value;
+      let countryColumn = document.getElementById("countryColumnR5Parameter").value;
+      let countryName = document.getElementById("countryR5Parameter").value;
+      let deads = document.getElementById("deadsR5Parameter").value;
+      let daysColumn = document.getElementById("daysColumnR5Parameter").value;
+      let timePredict = document.getElementById("daysPredictR5Parameter").value;
       const result = await fetch(`${API}/report5`, {
         method: "POST",
         headers: {
@@ -226,10 +227,10 @@ export const Principal = () => {
       conc = "Prediccion de mortalidad con un error de " + data.r2 + " y un rme de " + data.rme + ", la predicción para " + timePredict + " es: " + data.predict;
       setConclusion(conc);
     } else if (actualReport === "6") {
-      let countryColumn = document.getElementById("countryColumnParameter").value;
-      let countryName = document.getElementById("countryParameter").value;
-      let deads = document.getElementById("deadsParameter").value;
-      let daysColumn = document.getElementById("daysColumnParameter").value;
+      let countryColumn = document.getElementById("countryColumnR6Parameter").value;
+      let countryName = document.getElementById("countryR6Parameter").value;
+      let deads = document.getElementById("deadsR6Parameter").value;
+      let daysColumn = document.getElementById("daysColumnR6Parameter").value;
       const result = await fetch(`${API}/report6`, {
         method: "POST",
         headers: {
@@ -249,10 +250,10 @@ export const Principal = () => {
       conc = "Tendencia, con un error de " + data.r2 + " y un rme de " + data.rme;
       setConclusion(conc);
     } else if (actualReport === "8") {
-      let countryColumn = document.getElementById("countryColumnParameter").value;
-      let countryName = document.getElementById("countryParameter").value;
-      let infectedColumn = document.getElementById("infectedColumnParameter").value;
-      let daysColumn = document.getElementById("daysColumnParameter").value;
+      let countryColumn = document.getElementById("countryColumnR8Parameter").value;
+      let countryName = document.getElementById("countryR8Parameter").value;
+      let infectedColumn = document.getElementById("infectedColumnR8Parameter").value;
+      let daysColumn = document.getElementById("daysColumnR8Parameter").value;
       const result = await fetch(`${API}/report8`, {
         method: "POST",
         headers: {
@@ -272,10 +273,10 @@ export const Principal = () => {
       conc = "Predicción de casos de covid para un año, del país " + countryName;
       setConclusion(conc);
     } else if (actualReport === "9") {
-      let countryColumn = document.getElementById("countryColumnParameter").value;
-      let countryName = document.getElementById("countryParameter").value;
-      let vaccineds = document.getElementById("vaccinedsParameter").value;
-      let daysColumn = document.getElementById("daysColumnParameter").value;
+      let countryColumn = document.getElementById("countryColumnR9Parameter").value;
+      let countryName = document.getElementById("countryR9Parameter").value;
+      let vaccineds = document.getElementById("vaccinedsR9Parameter").value;
+      let daysColumn = document.getElementById("daysColumnR9Parameter").value;
       const result = await fetch(`${API}/report9`, {
         method: "POST",
         headers: {
@@ -295,11 +296,11 @@ export const Principal = () => {
       conc = "Tendencia de vacunaciones contra covid-19 con un error de " + data.r2 + " y un rme de " + data.rme;
       setConclusion(conc);
     } else if (actualReport === "10") {
-      let countryColumn = document.getElementById("countryColumnParameter").value;
-      let countryNameA = document.getElementById("countryAParameter").value;
-      let countryNameB = document.getElementById("countryBParameter").value;
-      let vaccineds = document.getElementById("vaccinedsParameter").value;
-      let daysColumn = document.getElementById("daysColumnParameter").value;
+      let countryColumn = document.getElementById("countryColumnR10Parameter").value;
+      let countryNameA = document.getElementById("countryAR10Parameter").value;
+      let countryNameB = document.getElementById("countryBR10Parameter").value;
+      let vaccineds = document.getElementById("vaccinedsR10Parameter").value;
+      let daysColumn = document.getElementById("daysColumnR10Parameter").value;
       const result = await fetch(`${API}/report10`, {
         method: "POST",
         headers: {
@@ -321,12 +322,12 @@ export const Principal = () => {
       conc = "Comparación entre tendencias de vacunaciones contra covid-19 con un error de " + data.r2 + " y un rme de " + data.rme;
       setConclusion(conc);
     } else if (actualReport === "15") {
-      let countryColumn = document.getElementById("countryColumnParameter").value;
-      let countryName = document.getElementById("countryParameter").value;
-      let confirmeds = document.getElementById("confirmedsParameter").value;
-      let daysColumn = document.getElementById("daysColumnParameter").value;
-      let departmentColumn = document.getElementById("departmentColumnParameter").value;
-      let department = document.getElementById("departmentParameter").value;
+      let countryColumn = document.getElementById("countryColumnR15Parameter").value;
+      let countryName = document.getElementById("countryR15Parameter").value;
+      let confirmeds = document.getElementById("confirmedsR15Parameter").value;
+      let daysColumn = document.getElementById("daysColumnR15Parameter").value;
+      let departmentColumn = document.getElementById("departmentColumnR15Parameter").value;
+      let department = document.getElementById("departmentR15Parameter").value;
       const result = await fetch(`${API}/report15`, {
         method: "POST",
         headers: {
