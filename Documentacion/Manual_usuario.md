@@ -12,8 +12,8 @@ _Durante la emergencia sanitaria provocada por el COVID-19, se ha observado un n
 
 _El flujo esencial de la aplicación es la carga de un archivo para obtener los datos, de esta manera se pueden crear diferetes reportes con el paso del tiempo o bien con diferentes datos._
 
-#### Flujo de la aplicación
-![This is a alt text.](../Documentacion/img/Flux.PNG "Pagina Web- Funcionamiento.")
+#### Flujo de la aplicación 🚀
+![This is a alt text.](./img/Flux.png)
 
 ### Herramientas Utilizadas 📋
 
@@ -26,8 +26,7 @@ _El flujo esencial de la aplicación es la carga de un archivo para obtener los 
 - Heroku: Para el control de versiones y para publicar la API.
 - html2canvas: Creación de un archivo pdf con el contenido establecido.
   
-## Quetzal 🚀
-![This is a alt text.](../Documentacion/img/General.PNG "Pagina Web- Funcionamiento.")
+![This is a alt text.](./img/General.png)
 
 
 ### 📋 Detalle del Flujo de la aplicación
@@ -40,9 +39,9 @@ _El flujo esencial de la aplicación es la carga de un archivo para obtener los 
 # 📋 Detalle de funcionalidad
 
 #### Parametrización
-![This is a alt text.](../Documentacion/img/Parametrice.PNG "Pagina Web- Funcionamiento.")
+![This is a alt text.](./img/Parametrice.png)
 #### Creación de imagen y conclución
-![This is a alt text.](../Documentacion/img/Graphic.PNG "Pagina Web- Funcionamiento.")
+![This is a alt text.](./img/Graphic.png)
 
 #### Tipos de archivos permitidos
 
