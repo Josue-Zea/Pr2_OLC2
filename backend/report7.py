@@ -8,13 +8,15 @@ from sklearn.linear_model import LinearRegression
 
 def crearRegrecion(file, fileType, vaccinedColumn, infectedColumn, daysColumn, countryName):
   df = ""
-  if fileType == "csv":
+  if fileType == ".csv":
     df = pd.read_csv(file)
-  elif fileType == "json":
+    df = df.fillna(0)
+  elif fileType == ".json":
     df = pd.read_json(file)
+    df = df.replace(np.nan, "")
   else:
     df = pd.read_excel(file)
-  df = df.fillna(0)
+    df = df.fillna(0)
   x = np.asarray(df[df['dias']])[:, np.newaxis]
   y = np.asarray(df[df['infectados']])[:, np.newaxis]
   poly_degree = 3

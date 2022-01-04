@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import html2canvas from "html2canvas";
 import { jsPDF } from "jspdf";
 import "./css/Principal.css"
-//const API = process.env.REACT_APP_API;
-const API = "http://127.0.0.1:5000/";
+const API = process.env.REACT_APP_API;
 const listReports = [
   ["1", "(1)Tendencia de la infección por Covid-19 en un País."], //Hechoo
   ["2", "(2)Predicción de Infectados en un País."], //Hechoo

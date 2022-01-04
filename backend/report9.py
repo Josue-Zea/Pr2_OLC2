@@ -8,13 +8,15 @@ from sklearn.linear_model import LinearRegression
 
 def getReport9(file, fileType, vaccinedColumn, infectedColumn, daysColumn, countryName):
   df = ""
-  if fileType == "csv":
+  if fileType == ".csv":
     df = pd.read_csv(file)
-  elif fileType == "json":
+    df = df.fillna(0)
+  elif fileType == ".json":
     df = pd.read_json(file)
+    df = df.replace(np.nan, "")
   else:
     df = pd.read_excel(file)
-  df = df.fillna(0)
+    df = df.fillna(0)
   values = df.loc[df[vaccinedColumn]==countryName]
   values['date_ordinal'] = pd.to_datetime(values[daysColumn]).apply(lambda date: date.toordinal())
   le = preprocessing.LabelEncoder()
