@@ -3,6 +3,7 @@ import html2canvas from "html2canvas";
 import { jsPDF } from "jspdf";
 import "./css/Principal.css"
 const API = process.env.REACT_APP_API;
+//const API = "http://127.0.0.1:5000/";
 const listReports = [
   ["1", "(1)Tendencia de la infección por Covid-19 en un País."], //Hechoo
   ["2", "(2)Predicción de Infectados en un País."], //Hechoo
@@ -169,7 +170,7 @@ export const Principal = () => {
       });
       const data = await result.json();
       setImage(data.image);
-      conc = "Indice de progresión de la pandemia.";
+      conc = "el índice de progresión de la pandemia obtenido es: "+data.indice;
       setConclusion(conc);
     } else if (actualReport === "4") {
       let countryColumn = document.getElementById("countryColumnR4Parameter").value;
@@ -425,7 +426,9 @@ export const Principal = () => {
         image !== "" &&
         <div id="toReportPDF">
           <center>
-            <h6 className="formH6">{conclusion}</h6>
+            <div className="container">
+              <p className="formH6">{conclusion}</p>
+            </div>
             <img src={`data:image/jpeg;base64,${image}`} />
             {
               image2 !== "" &&

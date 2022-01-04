@@ -61,5 +61,6 @@ def getReport3(file, fileType, infectedColumn, daysColumn):
   plt.ylabel('Infectados')
   buf = io.BytesIO()
   plt.savefig(buf, format='png')
-  finalValue = [buf.getvalue()]
+  var = str(model.coef_[0])
+  finalValue = [buf.getvalue(), var]
   return finalValue

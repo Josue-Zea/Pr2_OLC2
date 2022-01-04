@@ -58,7 +58,7 @@ def report3():
   infectedColumn = request.json["infectedColumn"]
   daysColumn = request.json["daysColumn"]
   var = getReport3(actualFile, fileType, infectedColumn, daysColumn)
-  return jsonify({"image":str(getImageEncode(var[0]))})
+  return jsonify({"image":str(getImageEncode(var[0])), "indice":var[1]})
 
 @app.route("/report4", methods=["POST"])
 def report4():
