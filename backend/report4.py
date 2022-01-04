@@ -35,12 +35,15 @@ def getReport4(file, fileType, countryColumn, departmentColumn, deadsColumn, day
   Y_pred = linear_regressor.predict(X)
 
   plt.scatter(X, Y)
+  rmse = np.sqrt(mean_squared_error(Y, Y_pred))
+  r2 = r2_score(Y, Y_pred)
+  title = ' RMSE = {}; R2 = {}'.format(round(rmse,2), round(r2,2))
+  plt.title('Predicción de mortalidad por COVID en'+departmentName+' de '+countryName+'. \n ' + title, fontsize=10)
+  plt.xlabel('Dias')
+  plt.ylabel('Infectados')
   plt.plot(X, Y_pred, color='blue')
   buf = io.BytesIO()
   plt.savefig(buf, format='png')
-  #######################Final values###################################
-  rmse = np.sqrt(mean_squared_error(Y, Y_pred))
-  r2 = r2_score(Y, Y_pred)
   variable = pd.to_datetime(timePredict, dayfirst = True).toordinal()
   predict = linear_regressor.predict([[variable]])
   finalValue = [buf.getvalue(), rmse, r2, predict]

@@ -18,7 +18,7 @@ const listReports = [
   ["12", "(12)Ánalisis Comparativo entres 2 o más paises o continentes."],
   ["13", "(13)Muertes promedio por casos confirmados y edad de covid 19 en un País."],
   ["14", "(14)Muertes según regiones de un país - Covid 19."],
-  ["15", "(15)Tendencia de casos confirmados de Coronavirus en un departamento de un País."],
+  ["15", "(15)Tendencia de casos confirmados de Coronavirus en un departamento de un País."], //Hecho
   ["16", "(16)Porcentaje de muertes frente al total de casos en un país, región o continente."],
   ["17", "(17)Tasa de comportamiento de casos activos en relación al número de muertes en un continente."],
   ["18", "(18)Comportamiento y clasificación de personas infectadas por COVID-19 por municipio en un País."],
@@ -63,6 +63,9 @@ export const Principal = () => {
 
   const parametrize = (e) => {
     e.preventDefault();
+    setImage("");
+    setImage2("");
+    setConclusion("");
     var item = document.getElementById("selectReport").value;
     setActualReport(item);
     if (item === "1") {
@@ -91,6 +94,9 @@ export const Principal = () => {
       setParametersReport([...parametersReport, ...date]);
     } else if (item === "10") {
       let date = [["Nombre de la columna del pais", "countryColumn"], ["Nombre de la columna de cantidad de vacunados", "vaccineds"], ["Ingrese el nombre de la columna de los dias", "daysColumn"], ["Nombre del pais a evaluar A", "countryA"], ["Nombre del pais a evaluar B", "countryB"]];
+      setParametersReport([...parametersReport, ...date]);
+    } else if (item === "15") {
+      let date = [["Nombre de la columna del pais", "countryColumn"], ["Nombre de la columna de los departamentos", "departmentColumn"], ["Nombre de la columna de cantidad de confirmados", "confirmeds"], ["Ingrese el nombre de la columna de los dias", "daysColumn"], ["Nombre del pais a evaluar", "country"], ["Nombre del departamento o estado a evaluar", "department"]];
       setParametersReport([...parametersReport, ...date]);
     }
   };
@@ -313,6 +319,33 @@ export const Principal = () => {
       setImage(data.image);
       setImage2(data.image2);
       conc = "Comparación entre tendencias de vacunaciones contra covid-19 con un error de " + data.r2 + " y un rme de " + data.rme;
+      setConclusion(conc);
+    } else if (actualReport === "15") {
+      let countryColumn = document.getElementById("countryColumnParameter").value;
+      let countryName = document.getElementById("countryParameter").value;
+      let confirmeds = document.getElementById("confirmedsParameter").value;
+      let daysColumn = document.getElementById("daysColumnParameter").value;
+      let departmentColumn = document.getElementById("departmentColumnParameter").value;
+      let department = document.getElementById("departmentParameter").value;
+      const result = await fetch(`${API}/report15`, {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body:
+          JSON.stringify({
+            fileType: fileType,
+            countryColumn: countryColumn,
+            daysColumn: daysColumn,
+            confirmeds: confirmeds,
+            countryName: countryName,
+            departmentColumn: departmentColumn,
+            department: department
+          })
+      });
+      const data = await result.json();
+      setImage(data.image);
+      conc = "Prediccion de mortalidad con un error de " + data.r2 + " y un rme de " + data.rme;
       setConclusion(conc);
     }
   };

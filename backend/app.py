@@ -10,12 +10,16 @@ from report5 import *
 from report6 import *
 from report8 import *
 from report9 import *
-from report10 import *
+from report15 import *
 
 app = Flask(__name__)
 actualFile = ""
 
 CORS(app)
+
+@app.route("/")
+def index():
+  return jsonify("Hola")
 
 @app.route("/loadFile", methods=["POST"])
 def loadFile():
@@ -127,6 +131,19 @@ def report10():
   var = getReport9(actualFile, fileType, countryColumn, vaccineds, daysColumn, countryNameA)
   varB = getReport9(actualFile, fileType, countryColumn, vaccineds, daysColumn, countryNameB)
   return jsonify({"image":str(getImageEncode(var[0])), "rme":str(var[1]), "r2":str(var[2]), "image2":str(getImageEncode(varB[0]))})
+
+@app.route("/report15", methods=["POST"])
+def report15():
+  global actualFile
+  fileType = request.json["fileType"]
+  countryColumn = request.json["countryColumn"]
+  confirmeds = request.json["confirmeds"]
+  daysColumn = request.json["daysColumn"]
+  countryName = request.json["countryName"]
+  department = request.json["department"]
+  departmentColumn = request.json["departmentColumn"]
+  var = getReport15(actualFile, fileType, countryColumn, departmentColumn, confirmeds, daysColumn, countryName, department)
+  return jsonify({"image":str(getImageEncode(var[0])), "rme":str(var[1]), "r2":str(var[2])})
 
 if __name__ == "__main__":
   app.run(port = 5000, debug=True)
