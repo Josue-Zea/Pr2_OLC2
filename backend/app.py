@@ -116,7 +116,7 @@ def report9():
   vaccineds = request.json["vaccineds"]
   daysColumn = request.json["daysColumn"]
   countryName = request.json["countryName"]
-  var = getReport10(actualFile, fileType, countryColumn, vaccineds, daysColumn, countryName)
+  var = getReport9(actualFile, fileType, countryColumn, vaccineds, daysColumn, countryName)
   return jsonify({"image":str(getImageEncode(var[0])), "rme":str(var[1]), "r2":str(var[2])})
 
 @app.route("/report10", methods=["POST"])
